@@ -1,0 +1,27 @@
+<h1>To-Do List</h1>
+<%= link_to "Add Task", new_task_path %>
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <%= task.title %> - <%= task.completed ? "✅" : "❌" %>
+      <%= link_to "Edit", edit_task_path(task) %> |
+      <%= link_to "Delete", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %>
+    </li>
+  <% end %>
+</ul>
+
+<h1>New Task</h1>
+<%= form_with model: @task, local: true do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+  <%= form.submit "Create Task" %>
+<% end %>
+
+
+<h1>Edit Task</h1>
+<%= form_with model: @task, local: true do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+  <%= form.check_box :completed %> Completed
+  <%= form.submit "Update Task" %>
+<% end %>

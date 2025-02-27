@@ -1,0 +1,7 @@
+<h1>Edit Task</h1>
+<%= form_with model: @task, local: true do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+  <%= form.check_box :completed %> Completed
+  <%= form.submit "Update Task" %>
+<% end %>
